@@ -22,7 +22,6 @@ class KiwiHomepage:
         self.deperture_date_done_button = page.locator('//button[@data-test="SearchFormDoneButton"]')
         self.accommodation_checkbox = page.locator('[data-test="accommodationCheckbox"]')
         self.search_button = page.locator('[data-test="LandingSearchButton"]')
-        #self.search_page = page.locator('[data-test="SearchFormFilters"]')
 
     def navigate(self):
         self.page.goto(self.URL)
@@ -36,15 +35,15 @@ class KiwiHomepage:
         
     def set_airport_from(self, airport_code: str):
         self.close_previous_airport_suggestions.click(timeout=5000)
-        self.page.wait_for_timeout(1000)
+        self.page.wait_for_timeout(1000) # Wait for the input to be ready not the best solution
         self.departure_input.fill(airport_code)
-        self.page.wait_for_timeout(1000)
+        self.page.wait_for_timeout(1000) # Wait for the input to be ready not the best solution
         self.first_airport_suggestion.first.click()
     
     def set_airport_to(self, airport_code: str):
-        self.page.wait_for_timeout(1000)
+        self.page.wait_for_timeout(1000) # Wait for the input to be ready not the best solution
         self.arrival_input.fill(airport_code)
-        self.page.wait_for_timeout(1000)
+        self.page.wait_for_timeout(1000) # Wait for the input to be ready not the best solution
         self.first_airport_suggestion.first.click()
 
     def set_departure_date(self, days_in_future: int):

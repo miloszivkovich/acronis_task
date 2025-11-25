@@ -11,13 +11,13 @@ def playwright_instance():
 
 @pytest.fixture(scope="session")
 def browser(playwright_instance: Playwright) -> Browser:
-    return playwright_instance.chromium.launch(headless=False) # Change to True to run headless
+    return playwright_instance.chromium.launch(headless=False)
 
 @pytest.fixture(scope="function")
 def page(browser: Browser):
     """Creates a new page (tab) for each test function."""
     page = browser.new_page()
-    page.set_default_timeout(10000) # Set a sensible default timeout
+    page.set_default_timeout(10000) 
     yield page
     page.close()
     
